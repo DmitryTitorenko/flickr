@@ -1,5 +1,5 @@
 # flickr
-Create flickr client for Android for search image and store random image to Realm DB 
+Create flickr client for Android for search image and store to Realm DB
 
 ## Built With
 
