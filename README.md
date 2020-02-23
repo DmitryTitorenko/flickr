@@ -12,4 +12,4 @@ Create flickr client for Android for search image and store random image to Real
 * [Realm](https://github.com/realm/realm-java) - Mobile database.
 * [Gradle](https://github.com/gradle/gradle) - Build tool.
 
-![Image](https://i.imgur.com/Zbdk9Sf.png)
+![Image](https://i.imgur.com/Zbdk9Sf.png =250x250)
