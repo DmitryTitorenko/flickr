@@ -1,4 +1,5 @@
 package com.example.flickr.injection
+
 import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
@@ -11,7 +12,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        AppBindingModule::class, AppModule::class, APIModule::class]
+        AppBindingModule::class, AppModule::class, APIModule::class, RealmModule::class]
 )
 
 interface AppComponent : AndroidInjector<DaggerApplication> {

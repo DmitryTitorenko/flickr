@@ -3,22 +3,22 @@ package com.example.flickr.view.base
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import com.example.flickr.view.base.mvp.MvpAppCompatActivity
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
+import dagger.android.HasAndroidInjector
 import io.realm.Realm
+import moxy.MvpAppCompatActivity
 import javax.inject.Inject
 
-abstract class BaseActivity : MvpAppCompatActivity(), BaseView, HasSupportFragmentInjector {
+abstract class BaseActivity : MvpAppCompatActivity(), BaseView, HasAndroidInjector {
 
     @Inject
-    lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+    lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> =
-        fragmentDispatchingAndroidInjector
+    override fun androidInjector(): AndroidInjector<Any> {
+        return androidInjector
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)

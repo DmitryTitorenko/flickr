@@ -1,12 +1,15 @@
 package com.example.flickr.view.images
 
-import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy
-import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
-import com.example.flickr.model.ResponseImageList
+import com.example.flickr.model.Item
 import com.example.flickr.view.base.BaseView
+import moxy.viewstate.strategy.alias.AddToEndSingle
+import moxy.viewstate.strategy.alias.OneExecution
 
 interface IImagesView : BaseView {
 
-    @StateStrategyType(OneExecutionStateStrategy::class)
-    fun handleSearch(list: ResponseImageList)
+    @AddToEndSingle
+    fun getList(list: List<Item>)
+
+    @OneExecution
+    fun updateList(list: List<Item>)
 }

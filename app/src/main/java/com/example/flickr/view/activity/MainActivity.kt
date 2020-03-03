@@ -1,27 +1,21 @@
 package com.example.flickr.view.activity
 
 import android.os.Bundle
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.flickr.R
 import com.example.flickr.view.base.BaseActivity
 import com.example.flickr.view.base.BaseView
-import dagger.Lazy
+import moxy.ktx.moxyPresenter
 import javax.inject.Inject
+import javax.inject.Provider
 
-interface IMainView : BaseView {
-}
+interface IMainView : BaseView
 
 class MainActivity : BaseActivity(), IMainView {
 
     @Inject
-    lateinit var daggerPresenter: Lazy<MainPresenter>
+    lateinit var presenterProvider: Provider<MainPresenter>
 
-    @InjectPresenter
-    lateinit var presenter: MainPresenter
-
-    @ProvidePresenter
-    fun providePresenter(): MainPresenter = daggerPresenter.get()
+    private val presenter by moxyPresenter { presenterProvider.get() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
